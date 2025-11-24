@@ -1,69 +1,50 @@
-# Kishan Thakkar
-**Senior Android Engineer**
-Surat, Gujarat | +91-9687745806 | [LinkedIn](https://www.linkedin.com/in/kishan-thakkar-387455b9) | [Email](mailto:kishan.thakkar38@gmail.com)
+<h1 align="center">Hi there, I'm Kishan Thakkar! 👋</h1>
+<h3 align="center">Senior Android Engineer | POS Architecture Specialist | Audio/Video Native Expert</h3>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=YOUR_GITHUB_USERNAME&label=Profile%20Views&color=0e75b6&style=flat" alt="kishan-thakkar" />
+</p>
+
+<p align="left"> &nbsp; &nbsp; &nbsp; 🔭 &nbsp; I’m currently working on <b>Enterprise POS Solutions & Hardware Integration</b><br>
+&nbsp; &nbsp; &nbsp; 🌱 &nbsp; I’m currently exploring <b>Advanced Jetpack Compose & KMP</b><br>
+&nbsp; &nbsp; &nbsp; 👯 &nbsp; I’m looking to collaborate on <b>Open Source Android Libraries</b><br>
+&nbsp; &nbsp; &nbsp; 💬 &nbsp; Ask me about <b>Android Architecture, NDK/C++, & Offline-First Systems</b><br>
+&nbsp; &nbsp; &nbsp; 📫 &nbsp; How to reach me: <b>kishanthakkar.beetonz@gmail.com</b>
+</p>
 
 ---
 
-## Professional Summary
-Senior Android Engineer with 6+ years of experience architecting scalable, high-performance mobile applications. Expert in **Kotlin**, **Jetpack Compose**, and **Clean Architecture**, with specialized proficiency in **POS Hardware Integration** (PAX, Verifone) and **Native Audio/Video Processing** (NDK, FFmpeg). Proven track record of leading development teams, implementing CI/CD pipelines, and optimizing app performance for enterprise-scale solutions.
+<h3 align="left">🏆 Github Trophies</h3>
+<div align="center">
+  <a href="https://github.com/ryo-ma/github-profile-trophy">
+    <img src="https://github-profile-trophy.vercel.app/?username=kishan2210&theme=flatone&row=1&column=7&margin-w=15&margin-h=15" alt="trophy" />
+  </a>
+</div>
 
 ---
 
-## Technical Skills
-
-| Domain | Skills |
-| :--- | :--- |
-| **Languages** | Kotlin (Expert), Java (Legacy), C++ (NDK/JNI), SQL |
-| **Architecture** | Clean Architecture, MVVM, MVI, Multi-Module, SOLID |
-| **Android SDK** | Jetpack Compose, Coroutines, Flow, Hilt/Koin, Room, WorkManager |
-| **Hardware/System** | PAX/Verifone POS SDKs, Visa Tap to Glass, Bluetooth Thermal Printers, Oboe (Audio), OpenGL |
-| **DevOps & Tools** | Git, CI/CD (GitHub Actions), Gradle KTS, R8/ProGuard, Firebase, Jira |
-| **Quality** | JUnit, Espresso, SonarQube |
+<h3 align="left">Connect with me:</h3>
+<p align="left">
+<a href="https://linkedin.com/in/YOUR_LINKEDIN_ID" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="kishanthakkar" height="30" width="40" /></a>
+<a href="mailto:kishanthakkar.beetonz@gmail.com" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/google-gmail.svg" alt="email" height="30" width="40" /></a>
+</p>
 
 ---
 
-## Professional Experience
-
-### **Crest Infosystems Pvt. Ltd.** | Sr. Software Engineer
-*May 2023 – Present*
-* **Architectural Leadership:** Spearheaded the migration of legacy modules to a Multi-Module Architecture using MVVM and Clean Architecture principles.
-* **POS System Design:** Architected a white-label POS solution supporting Product Flavors to manage multiple client environments (Worker/Client variants), reducing deployment time by 40%.
-* **Team Mentorship:** Led a team of Android developers, conducting Code Reviews and overseeing PR approvals.
-* **Hardware Integration:** Implemented complex integrations with PAX and Verifone SDKs, designing a hardware abstraction layer for split payments.
-
-### **Narola Infotech** | Sr. Software Engineer
-*Jun 2021 – Apr 2023*
-* **Native Audio Engineering:** Engineered "Miclab," a karaoke app using C++ (NDK), Oboe, and FFmpeg. Optimized audio latency from 500+ms to <100ms.
-* **Feature Engineering:** Designed dynamic UI flows similar to Reels/TikTok using custom RecyclerView optimizations and ExoPlayer (60fps performance).
-* **Reactive Programming:** Heavily utilized RxJava and Kotlin Coroutines for asynchronous data streams.
-
-### **BeetonZ Infotech** | Android Application Developer
-*Jun 2019 – Apr 2021*
-* **Full Lifecycle Development:** Managed the complete SDLC from requirement gathering to Play Store deployment.
-* **Innovation:** Integrated ARCore to build "Ar-Ruler," utilizing OpenGL for rendering 3D measurements.
-
----
-
-## Key Projects
-
-### **Delta1st & Totill (Enterprise POS Solutions)**
-* **Tech:** Kotlin, Room, Hilt, PAX/Verifone SDK, WorkManager, Visa Tap to Glass.
-* **Innovation:** Integrated **Visa Tap to Glass**, transforming standard Android devices into payment terminals.
-* **Performance:** Achieved a **60% reduction** in payment processing time by architecting an Offline-First transaction flow.
-* **Resilience:** Engineered a fail-safe synchronization mechanism using WorkManager to guarantee 100% order completion during internet loss.
-
-### **AR Ruler (Spatial Utility Tool)**
-* **Tech:** Java, ARCore, OpenGL.
-* **Innovation:** Developed a spatial measurement tool utilizing Google ARCore to detect planes and calculate distance/area.
-* **Computer Vision:** Implemented logic to calculate the area between four distinct points and render 3D measurement lines via OpenGL.
-
-### **Miclab (Multimedia/Social Platform)**
-* **Tech:** Kotlin, C++ (CMake), FFmpeg, Oboe.
-* **Impact:** Built a video processing pipeline allowing users to record, apply live audio filters (Reverb/Echo), and watermark videos locally.
-
----
-
-## Education
-**Bachelor of Computer Engineering** | 8.20 CGPA
-*VIEAT, Gujarat Technological University (2019)*
-* **Capstone:** "Savitr" - Genetic Algorithm implementation for solving the Traveling Salesman Problem.
+<h3 align="left">🛠 Languages and Tools:</h3>
+<p align="left"> 
+    <a href="https://developer.android.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/android/android-original.svg" alt="android" width="40" height="40"/> </a> 
+    <a href="https://kotlinlang.org" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg" alt="kotlin" width="40" height="40"/> </a> 
+    <a href="https://www.java.com" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> </a>
+    <a href="https://developer.android.com/jetpack/compose" target="_blank" rel="noreferrer"> <img src="https://developer.android.com/static/images/jetpack/compose-icon.png" alt="compose" width="40" height="40"/> </a>
+    
+    <a href="https://www.cplusplus.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/> </a>
+    <a href="https://sqlite.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="sqlite" width="40" height="40"/> </a>
+    
+    <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/> </a>
+    <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a>
+    <a href="https://gradle.org/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/gradle/gradle-icon.svg" alt="gradle" width="40" height="40"/> </a>
+    <a href="https://www.atlassian.com/software/jira" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jira/jira-original.svg" alt="jira" width="40" height="40"/> </a>
+    
+    <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a>
+</p>
