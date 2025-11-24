@@ -1,8 +1,3 @@
----
-layout: default
-title: Kishan Thakkar | Senior Android Engineer
----
-
 # Kishan Thakkar
 **Senior Android Engineer**
 Surat, Gujarat | +91-9687745806 | [LinkedIn](https://www.linkedin.com/in/kishan-thakkar-387455b9) | [Email](mailto:kishan.thakkar38@gmail.com)
