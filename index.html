@@ -6,7 +6,8 @@
     <title>Kishan Thakkar | Senior Android Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --bg-color: #0B0D10;
@@ -39,11 +40,14 @@
             padding: 0 10%;
             background: radial-gradient(circle at 90% 10%, rgba(61, 220, 132, 0.05) 0%, transparent 50%);
             position: relative;
-            /* CRITICAL: This cuts off the mascot parts that hang outside */
             overflow: hidden; 
         }
 
-        .hero-text-content { z-index: 2; }
+        /* High Z-Index ensures buttons are clickable */
+        .hero-text-content { 
+            z-index: 10; 
+            position: relative;
+        }
 
         .hero-label {
             font-family: 'JetBrains Mono', monospace;
@@ -68,48 +72,72 @@
             margin-bottom: 40px;
         }
 
+        /* --- BUTTONS --- */
+        .btn-container {
+            display: flex;
+            gap: 20px;
+        }
+
         .cta-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             padding: 15px 30px;
-            border: 1px solid var(--accent);
-            color: var(--accent);
             border-radius: 5px;
             font-family: 'JetBrains Mono', monospace;
             font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            z-index: 20; /* Extra high to ensure clicks work */
         }
 
-        .cta-btn:hover {
-            background: rgba(61, 220, 132, 0.1);
+        /* Filled Button (Email) */
+        .primary-btn {
+            background-color: rgba(61, 220, 132, 0.1);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .primary-btn:hover {
+            background-color: rgba(61, 220, 132, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Outlined Button (LinkedIn) */
+        .outline-btn {
+            border: 1px solid var(--text-muted);
+            color: var(--text-main);
+        }
+
+        .outline-btn:hover {
+            border-color: var(--text-main);
+            background-color: rgba(255, 255, 255, 0.05);
             transform: translateY(-3px);
         }
 
         /* --- MASCOT CONTAINER (ABSOLUTE POSITIONING) --- */
         .hero-image-container {
             position: absolute;
-            /* PUSHED OUTSIDE THE FRAME: */
-            bottom: -150px; /* Sinks the body down */
-            right: -120px;  /* Pushes the right side off screen */
-            
-            /* Layout */
+            bottom: -150px; 
+            right: -120px;  
             width: 500px;
             height: auto;
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            z-index: 1;
+            z-index: 1; /* Lower than text so buttons work */
+            pointer-events: none; /* Allows clicks to pass through empty spaces if overlapping */
         }
 
         .android-svg {
             width: 100%;
             height: auto;
-            /* TILT: Leaning in from the corner */
             transform: rotate(-25deg); 
             transform-origin: bottom right;
             overflow: visible;
         }
 
         /* --- PARTS ANIMATION --- */
-        /* Head pops up */
         .mascot-head {
             transform: translateY(100px); 
             opacity: 0;
@@ -117,7 +145,6 @@
             animation-delay: 0.2s;
         }
 
-        /* Body rises */
         .mascot-body {
             transform: translateY(200px); 
             opacity: 0;
@@ -125,13 +152,9 @@
             animation-delay: 0.6s; 
         }
 
-        /* Wave Logic:
-           1. Starts hidden with body (bodyEntrance)
-           2. Then waves (waveAboveHead) 
-        */
         .mascot-left-arm {
             transform-box: fill-box;
-            transform-origin: 50% 10%; /* Shoulder Pivot */
+            transform-origin: 50% 10%; 
             opacity: 0; 
             animation: 
                 bodyEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.6s, 
@@ -141,13 +164,12 @@
         @keyframes headEntrance { to { transform: translateY(0); opacity: 1; } }
         @keyframes bodyEntrance { to { transform: translateY(0); opacity: 1; } }
 
-        /* WAVE ANIMATION: High Wave */
         @keyframes waveHand {
             0% { transform: rotate(0deg); }       
-            20% { transform: rotate(160deg); } /* Hand goes Up */   
-            40% { transform: rotate(140deg); } /* Wave */   
-            60% { transform: rotate(160deg); } /* Wave */   
-            100% { transform: rotate(0deg); }  /* Hand goes Down */   
+            20% { transform: rotate(160deg); }   
+            40% { transform: rotate(140deg); }   
+            60% { transform: rotate(160deg); }   
+            100% { transform: rotate(0deg); }    
         }
 
         /* --- SECTIONS --- */
@@ -197,7 +219,9 @@
                 text-align: center; 
                 padding-top: 40px; 
             }
-            /* On Mobile, we adjust the peeking to be less aggressive or bottom-centered */
+            .btn-container {
+                justify-content: center; /* Center buttons on mobile */
+            }
             .hero-image-container {
                 right: -50px;
                 bottom: -100px;
@@ -219,7 +243,15 @@
                 <span style="color: var(--accent)">Native Audio/Video (NDK)</span>, and 
                 architecting offline-first enterprise applications.
             </p>
-            <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn">Get In Touch</a>
+            
+            <div class="btn-container">
+                <a href="https://linkedin.com/in/kishan-thakkar-5389a01ba" target="_blank" class="cta-btn outline-btn">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn primary-btn">
+                    <i class="fas fa-envelope"></i> Email Me
+                </a>
+            </div>
         </div>
 
         <div class="hero-image-container">
@@ -241,7 +273,6 @@
                 </g>
 
                 <rect class="mascot-body android-fill" x="165" y="75" width="25" height="70" rx="12" />
-
                 <rect class="mascot-body android-fill" x="60" y="180" width="25" height="70" rx="10" />
                 <rect class="mascot-body android-fill" x="115" y="180" width="25" height="70" rx="10" />
             </svg>
@@ -359,7 +390,14 @@
         <p class="hero-desc" style="margin: 0 auto 40px auto;">
             I'm currently looking for new opportunities. Whether you have a question about POS integrations or just want to say hi, my inbox is open!
         </p>
-        <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn" style="margin-top: 20px;">Say Hello</a>
+        <div class="btn-container" style="justify-content: center; margin-top: 30px;">
+            <a href="https://linkedin.com/in/kishan-thakkar-5389a01ba" target="_blank" class="cta-btn outline-btn">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn primary-btn">
+                <i class="fas fa-envelope"></i> Email Me
+            </a>
+        </div>
         <div style="margin-top: 50px; font-size: 0.8rem; color: var(--text-muted);">
             <p>Designed & Built by Kishan Thakkar</p>
         </div>
