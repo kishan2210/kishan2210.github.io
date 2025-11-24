@@ -2,14 +2,14 @@
 <h3 align="center">Senior Android Engineer | POS Architecture Specialist | Audio/Video Native Expert</h3>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=YOUR_GITHUB_USERNAME&label=Profile%20Views&color=0e75b6&style=flat" alt="kishan-thakkar" />
+  <img src="https://komarev.com/ghpvc/?username=kishan2210&label=Profile%20Views&color=0e75b6&style=flat" alt="kishan-thakkar" />
 </p>
 
 <p align="left"> &nbsp; &nbsp; &nbsp; 🔭 &nbsp; I’m currently working on <b>Enterprise POS Solutions & Hardware Integration</b><br>
 &nbsp; &nbsp; &nbsp; 🌱 &nbsp; I’m currently exploring <b>Advanced Jetpack Compose & KMP</b><br>
 &nbsp; &nbsp; &nbsp; 👯 &nbsp; I’m looking to collaborate on <b>Open Source Android Libraries</b><br>
 &nbsp; &nbsp; &nbsp; 💬 &nbsp; Ask me about <b>Android Architecture, NDK/C++, & Offline-First Systems</b><br>
-&nbsp; &nbsp; &nbsp; 📫 &nbsp; How to reach me: <b>kishanthakkar.beetonz@gmail.com</b>
+&nbsp; &nbsp; &nbsp; 📫 &nbsp; How to reach me: <b>kishan.thakkar38@gmail.com</b>
 </p>
 
 ---
