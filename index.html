@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishan Thakkar | Senior Android Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-color: #0B0D10;
+            --card-bg: #161B22;
+            --accent: #3DDC84; /* Android Green */
+            --text-main: #E6EDF3;
+            --text-muted: #8B949E;
+            --border: #30363D;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        
+        /* --- HERO SECTION --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at 80% 20%, rgba(61, 220, 132, 0.1) 0%, transparent 40%);
+        }
+
+        .hero-label {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #8B949E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            max-width: 600px;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: bold;
+        }
+
+        .cta-btn:hover {
+            background: rgba(61, 220, 132, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* --- SKILLS GRID --- */
+        .section { padding: 100px 10%; }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 1px;
+            background: var(--border);
+            margin-left: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-tag {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* --- EXPERIENCE TIMELINE --- */
+        .timeline {
+            position: relative;
+            border-left: 2px solid var(--border);
+            margin-left: 10px;
+            padding-left: 40px;
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -49px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+        }
+
+        .job-title { font-size: 1.4rem; color: var(--text-main); }
+        .company { color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; display: block;}
+        .job-desc { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- PROJECTS --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .project-title { font-size: 1.4rem; margin-bottom: 10px; }
+        .project-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CONTACT --- */
+        .contact-section { text-align: center; margin-bottom: 100px; }
+        .contact-title { font-size: 3rem; margin-bottom: 20px; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .section { padding: 80px 5%; }
+            header { padding: 0 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <p class="hero-label">Hi, my name is</p>
+        <h1 class="hero-title">Kishan Thakkar.</h1>
+        <h2 class="hero-title" style="color: var(--text-muted); font-size: 3rem;">I build things for Android.</h2>
+        <p class="hero-desc">
+            I am a Senior Android Engineer with 7+ years of experience. specialized in 
+            <span style="color: var(--accent)">POS Hardware Integration</span>, 
+            <span style="color: var(--accent)">Native Audio/Video (NDK)</span>, and 
+            architecting offline-first enterprise applications.
+        </p>
+        <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn">Get In Touch</a>
+    </header>
+
+    <section class="section">
+        <h2 class="section-title">Where I've Worked</h2>
+        <div class="timeline">
+            
+            <div class="timeline-item">
+                <h3 class="job-title">Senior Software Engineer</h3>
+                <span class="company">@ Crest Infosystems Pvt. Ltd.</span>
+                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">May 2023 – Present</p>
+                <ul class="job-desc">
+                    <li>Architected a white-label POS solution supporting Product Flavors to manage multiple client environments.</li>
+                    <li>Spearheaded migration of legacy modules to Multi-Module Architecture using MVVM & Clean Architecture.</li>
+                    <li>Led a team of Android developers, conducting code reviews and mentorship.</li>
+                    [cite_start]<li>Implemented complex hardware integrations with PAX and Verifone SDKs. [cite: 17, 18, 19, 20, 22]</li>
+                </ul>
+            </div>
+
+            <div class="timeline-item">
+                <h3 class="job-title">Senior Software Engineer</h3>
+                <span class="company">@ Narola Infotech</span>
+                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">Jun 2021 – Apr 2023</p>
+                <ul class="job-desc">
+                    <li>Engineered "Miclab" karaoke app using C++ (NDK), Oboe, and FFmpeg.</li>
+                    <li>Optimized audio latency from 500ms to <100ms for real-time effects.</li>
+                    [cite_start]<li>Designed TikTok-style UI flows using custom RecyclerView optimizations. [cite: 23, 24, 25, 26]</li>
+                </ul>
+            </div>
+
+             <div class="timeline-item">
+                <h3 class="job-title">Android Application Developer</h3>
+                <span class="company">@ BeetonZ Infotech</span>
+                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">Jun 2019 – Apr 2021</p>
+                <ul class="job-desc">
+                    <li>Managed complete SDLC from requirement gathering to Play Store deployment.</li>
+                    [cite_start]<li>Integrated ARCore to build utility tools utilizing OpenGL for 3D rendering. [cite: 29, 30, 32]</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Key Projects</h2>
+        <div class="project-grid">
+
+            <div class="project-card">
+                <div class="project-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">Delta1st & Totill POS</h3>
+                <p class="project-desc">
+                    Enterprise POS solution with <b>Visa Tap to Glass</b> integration. [cite_start]Achieved 60% faster checkout via offline-first architecture using Room & WorkManager. [cite: 34, 35, 38]
+                </p>
+                <div class="tech-stack">
+                    <span>Kotlin</span>
+                    <span>Hilt</span>
+                    <span>PAX SDK</span>
+                    <span>Verifone</span>
+                    <span>Offline-First</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">Miclab Karaoke</h3>
+                <p class="project-desc">
+                    Multimedia platform allowing real-time audio recording with reverb/echo effects. [cite_start]Built using Native C++ (NDK) and FFmpeg for video merging. [cite: 46, 48]
+                </p>
+                <div class="tech-stack">
+                    <span>C++ (NDK)</span>
+                    <span>FFmpeg</span>
+                    <span>Oboe</span>
+                    <span>OpenGL</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">Writi Healthcare</h3>
+                <p class="project-desc">
+                    Real-time patient record system for doctors/nurses. [cite_start]Integrated Twilio for virtual visits and Socket.IO for live record updates. [cite: 43, 45]
+                </p>
+                <div class="tech-stack">
+                    <span>MVVM</span>
+                    <span>Socket.IO</span>
+                    <span>Twilio</span>
+                    <span>Koin</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-tag">Kotlin (Expert)</div>
+            <div class="skill-tag">Java</div>
+            <div class="skill-tag">Jetpack Compose</div>
+            <div class="skill-tag">Clean Arch</div>
+            <div class="skill-tag">MVVM / MVI</div>
+            <div class="skill-tag">C++ (NDK)</div>
+            <div class="skill-tag">Hilt / Koin</div>
+            <div class="skill-tag">Coroutines</div>
+            <div class="skill-tag">Room DB</div>
+            <div class="skill-tag">PAX / Verifone</div>
+            <div class="skill-tag">GitHub Actions</div>
+            <div class="skill-tag">Gradle KTS</div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <p class="hero-label">What's Next?</p>
+        <h2 class="contact-title">Get In Touch</h2>
+        <p class="hero-desc" style="margin: 0 auto 40px auto;">
+            I'm currently looking for new opportunities. Whether you have a question about POS integrations or just want to say hi, my inbox is open!
+        </p>
+        <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn" style="margin-top: 20px;">Say Hello</a>
+        <div style="margin-top: 50px; font-size: 0.8rem; color: var(--text-muted);">
+            <p>Designed & Built by Kishan Thakkar</p>
+        </div>
+    </section>
+
+</body>
+</html>
