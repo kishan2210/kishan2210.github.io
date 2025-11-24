@@ -30,15 +30,20 @@
         h1, h2, h3 { font-weight: 800; letter-spacing: -0.5px; }
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         
-        /* --- HERO SECTION --- */
+        /* --- HERO HEADER --- */
         header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
             padding: 0 10%;
-            background: radial-gradient(circle at 80% 20%, rgba(61, 220, 132, 0.1) 0%, transparent 40%);
+            background: radial-gradient(circle at 90% 10%, rgba(61, 220, 132, 0.05) 0%, transparent 50%);
+            position: relative;
+            /* CRITICAL: This cuts off the mascot parts that hang outside */
+            overflow: hidden; 
         }
+
+        .hero-text-content { z-index: 2; }
 
         .hero-label {
             font-family: 'JetBrains Mono', monospace;
@@ -78,235 +83,170 @@
             transform: translateY(-3px);
         }
 
-        /* --- SKILLS GRID --- */
-        .section { padding: 100px 10%; }
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-        }
-        .section-title::after {
-            content: "";
-            flex-grow: 1;
-            height: 1px;
-            background: var(--border);
-            margin-left: 20px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 15px;
-        }
-
-        .skill-tag {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 10px;
-            text-align: center;
-            border-radius: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .skill-tag:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* --- EXPERIENCE TIMELINE --- */
-        .timeline {
-            position: relative;
-            border-left: 2px solid var(--border);
-            margin-left: 10px;
-            padding-left: 40px;
-        }
-
-        .timeline-item {
-            margin-bottom: 50px;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: "";
+        /* --- MASCOT CONTAINER (ABSOLUTE POSITIONING) --- */
+        .hero-image-container {
             position: absolute;
-            left: -49px;
-            top: 5px;
-            width: 16px;
-            height: 16px;
-            background: var(--bg-color);
-            border: 2px solid var(--accent);
-            border-radius: 50%;
+            /* PUSHED OUTSIDE THE FRAME: */
+            bottom: -150px; /* Sinks the body down */
+            right: -120px;  /* Pushes the right side off screen */
+            
+            /* Layout */
+            width: 500px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 1;
         }
 
+        .android-svg {
+            width: 100%;
+            height: auto;
+            /* TILT: Leaning in from the corner */
+            transform: rotate(-25deg); 
+            transform-origin: bottom right;
+            overflow: visible;
+        }
+
+        /* --- PARTS ANIMATION --- */
+        /* Head pops up */
+        .mascot-head {
+            transform: translateY(100px); 
+            opacity: 0;
+            animation: headEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation-delay: 0.2s;
+        }
+
+        /* Body rises */
+        .mascot-body {
+            transform: translateY(200px); 
+            opacity: 0;
+            animation: bodyEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation-delay: 0.6s; 
+        }
+
+        /* Wave Logic:
+           1. Starts hidden with body (bodyEntrance)
+           2. Then waves (waveAboveHead) 
+        */
+        .mascot-left-arm {
+            transform-box: fill-box;
+            transform-origin: 50% 10%; /* Shoulder Pivot */
+            opacity: 0; 
+            animation: 
+                bodyEntrance 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.6s, 
+                waveHand 2.5s ease-in-out forwards 1.6s; 
+        }
+
+        @keyframes headEntrance { to { transform: translateY(0); opacity: 1; } }
+        @keyframes bodyEntrance { to { transform: translateY(0); opacity: 1; } }
+
+        /* WAVE ANIMATION: High Wave */
+        @keyframes waveHand {
+            0% { transform: rotate(0deg); }       
+            20% { transform: rotate(160deg); } /* Hand goes Up */   
+            40% { transform: rotate(140deg); } /* Wave */   
+            60% { transform: rotate(160deg); } /* Wave */   
+            100% { transform: rotate(0deg); }  /* Hand goes Down */   
+        }
+
+        /* --- SECTIONS --- */
+        .section { padding: 100px 10%; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; display: flex; align-items: center; }
+        .section-title::after { content: ""; flex-grow: 1; height: 1px; background: var(--border); margin-left: 20px; }
+        
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; }
+        .skill-tag {
+            background: var(--card-bg); border: 1px solid var(--border); padding: 10px;
+            text-align: center; border-radius: 8px; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem; color: var(--text-muted);
+        }
+        .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+        .timeline { position: relative; border-left: 2px solid var(--border); margin-left: 10px; padding-left: 40px; }
+        .timeline-item { margin-bottom: 50px; position: relative; }
+        .timeline-item::before {
+            content: ""; position: absolute; left: -49px; top: 5px; width: 16px; height: 16px;
+            background: var(--bg-color); border: 2px solid var(--accent); border-radius: 50%;
+        }
         .job-title { font-size: 1.4rem; color: var(--text-main); }
         .company { color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; display: block;}
         .job-desc { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* --- PROJECTS --- */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .project-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            transition: 0.3s;
-            border: 1px solid transparent;
+            background: var(--card-bg); padding: 30px; border-radius: 10px;
+            transition: 0.3s; border: 1px solid transparent;
         }
-
         .project-card:hover {
-            transform: translateY(-7px);
-            border-color: var(--accent);
+            transform: translateY(-7px); border-color: var(--accent);
             box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
         }
-
-        .project-top {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-            color: var(--accent);
-        }
-
+        .project-top { display: flex; justify-content: space-between; margin-bottom: 20px; color: var(--accent); }
         .project-title { font-size: 1.4rem; margin-bottom: 10px; }
         .project-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; }
-        
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); }
 
-        /* --- CONTACT --- */
         .contact-section { text-align: center; margin-bottom: 100px; }
         .contact-title { font-size: 3rem; margin-bottom: 20px; }
 
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.8rem; }
-            .section { padding: 80px 5%; }
-            header { padding: 0 5%; }
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 900px) {
+            header { 
+                grid-template-columns: 1fr; 
+                text-align: center; 
+                padding-top: 40px; 
+            }
+            /* On Mobile, we adjust the peeking to be less aggressive or bottom-centered */
+            .hero-image-container {
+                right: -50px;
+                bottom: -100px;
+                width: 300px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <p class="hero-label">Hi, my name is</p>
-        <h1 class="hero-title">Kishan Thakkar.</h1>
-        <h2 class="hero-title" style="color: var(--text-muted); font-size: 3rem;">I build things for Android.</h2>
-        <p class="hero-desc">
-            I am a Senior Android Engineer with 7+ years of experience. specialized in 
-            <span style="color: var(--accent)">POS Hardware Integration</span>, 
-            <span style="color: var(--accent)">Native Audio/Video (NDK)</span>, and 
-            architecting offline-first enterprise applications.
-        </p>
-        <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn">Get In Touch</a>
+        <div class="hero-text-content">
+            <p class="hero-label">Hi, my name is</p>
+            <h1 class="hero-title">Kishan Thakkar.</h1>
+            <h2 class="hero-title" style="color: var(--text-muted); font-size: 3rem;">I build things for Android.</h2>
+            <p class="hero-desc">
+                I am a Senior Android Engineer with 7+ years of experience. specialized in 
+                <span style="color: var(--accent)">POS Hardware Integration</span>, 
+                <span style="color: var(--accent)">Native Audio/Video (NDK)</span>, and 
+                architecting offline-first enterprise applications.
+            </p>
+            <a href="mailto:kishan.thakkar38@gmail.com" class="cta-btn">Get In Touch</a>
+        </div>
+
+        <div class="hero-image-container">
+            <svg class="android-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+                <style>.android-fill { fill: #3DDC84; }</style>
+                
+                <g class="mascot-head">
+                    <path class="android-fill" d="M40,70 A60,60 0 0,1 160,70 Z" />
+                    <circle fill="#0B0D10" cx="75" cy="45" r="5" />
+                    <circle fill="#0B0D10" cx="125" cy="45" r="5" />
+                    <line x1="70" y1="20" x2="55" y2="5" stroke="#3DDC84" stroke-width="5" stroke-linecap="round" />
+                    <line x1="130" y1="20" x2="145" y2="5" stroke="#3DDC84" stroke-width="5" stroke-linecap="round" />
+                </g>
+
+                <rect class="mascot-body android-fill" x="40" y="75" width="120" height="100" rx="0" ry="0" style="border-bottom-left-radius: 15px; border-bottom-right-radius: 15px;" />
+                
+                <g class="mascot-left-arm">
+                    <rect class="android-fill" x="10" y="75" width="25" height="70" rx="12" />
+                </g>
+
+                <rect class="mascot-body android-fill" x="165" y="75" width="25" height="70" rx="12" />
+
+                <rect class="mascot-body android-fill" x="60" y="180" width="25" height="70" rx="10" />
+                <rect class="mascot-body android-fill" x="115" y="180" width="25" height="70" rx="10" />
+            </svg>
+        </div>
     </header>
-
-    <section class="section">
-        <h2 class="section-title">Where I've Worked</h2>
-        <div class="timeline">
-            
-            <div class="timeline-item">
-                <h3 class="job-title">Senior Software Engineer</h3>
-                <span class="company">@ Crest Infosystems Pvt. Ltd.</span>
-                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">May 2023 – Present</p>
-                <ul class="job-desc">
-                    <li>Architected a white-label POS solution supporting Product Flavors to manage multiple client environments.</li>
-                    <li>Spearheaded migration of legacy modules to Multi-Module Architecture using MVVM & Clean Architecture.</li>
-                    <li>Led a team of Android developers, conducting code reviews and mentorship.</li>
-                    [cite_start]<li>Implemented complex hardware integrations with PAX and Verifone SDKs. [cite: 17, 18, 19, 20, 22]</li>
-                </ul>
-            </div>
-
-            <div class="timeline-item">
-                <h3 class="job-title">Senior Software Engineer</h3>
-                <span class="company">@ Narola Infotech</span>
-                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">Jun 2021 – Apr 2023</p>
-                <ul class="job-desc">
-                    <li>Engineered "Miclab" karaoke app using C++ (NDK), Oboe, and FFmpeg.</li>
-                    <li>Optimized audio latency from 500ms to <100ms for real-time effects.</li>
-                    [cite_start]<li>Designed TikTok-style UI flows using custom RecyclerView optimizations. [cite: 23, 24, 25, 26]</li>
-                </ul>
-            </div>
-
-             <div class="timeline-item">
-                <h3 class="job-title">Android Application Developer</h3>
-                <span class="company">@ BeetonZ Infotech</span>
-                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">Jun 2019 – Apr 2021</p>
-                <ul class="job-desc">
-                    <li>Managed complete SDLC from requirement gathering to Play Store deployment.</li>
-                    [cite_start]<li>Integrated ARCore to build utility tools utilizing OpenGL for 3D rendering. [cite: 29, 30, 32]</li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 class="section-title">Key Projects</h2>
-        <div class="project-grid">
-
-            <div class="project-card">
-                <div class="project-top">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                </div>
-                <h3 class="project-title">Delta1st & Totill POS</h3>
-                <p class="project-desc">
-                    Enterprise POS solution with <b>Visa Tap to Glass</b> integration. [cite_start]Achieved 60% faster checkout via offline-first architecture using Room & WorkManager. [cite: 34, 35, 38]
-                </p>
-                <div class="tech-stack">
-                    <span>Kotlin</span>
-                    <span>Hilt</span>
-                    <span>PAX SDK</span>
-                    <span>Verifone</span>
-                    <span>Offline-First</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-top">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                </div>
-                <h3 class="project-title">Miclab Karaoke</h3>
-                <p class="project-desc">
-                    Multimedia platform allowing real-time audio recording with reverb/echo effects. [cite_start]Built using Native C++ (NDK) and FFmpeg for video merging. [cite: 46, 48]
-                </p>
-                <div class="tech-stack">
-                    <span>C++ (NDK)</span>
-                    <span>FFmpeg</span>
-                    <span>Oboe</span>
-                    <span>OpenGL</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-top">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-                </div>
-                <h3 class="project-title">Writi Healthcare</h3>
-                <p class="project-desc">
-                    Real-time patient record system for doctors/nurses. [cite_start]Integrated Twilio for virtual visits and Socket.IO for live record updates. [cite: 43, 45]
-                </p>
-                <div class="tech-stack">
-                    <span>MVVM</span>
-                    <span>Socket.IO</span>
-                    <span>Twilio</span>
-                    <span>Koin</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
 
     <section class="section">
         <h2 class="section-title">Technical Skills</h2>
@@ -323,6 +263,93 @@
             <div class="skill-tag">PAX / Verifone</div>
             <div class="skill-tag">GitHub Actions</div>
             <div class="skill-tag">Gradle KTS</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Key Projects</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">Delta1st & Totill POS</h3>
+                <p class="project-desc">
+                    Enterprise POS solution with <b>Visa Tap to Glass</b> integration. Achieved 60% faster checkout via offline-first architecture using Room & WorkManager.
+                </p>
+                <div class="tech-stack">
+                    <span>Kotlin</span>
+                    <span>Hilt</span>
+                    <span>PAX SDK</span>
+                    <span>Verifone</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">Miclab Karaoke</h3>
+                <p class="project-desc">
+                    Multimedia platform allowing real-time audio recording with reverb/echo effects. Built using Native C++ (NDK) and FFmpeg for video merging.
+                </p>
+                <div class="tech-stack">
+                    <span>C++ (NDK)</span>
+                    <span>FFmpeg</span>
+                    <span>Oboe</span>
+                    <span>OpenGL</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </div>
+                <h3 class="project-title">Writi Healthcare</h3>
+                <p class="project-desc">
+                    Real-time patient record system for doctors/nurses. Integrated Twilio for virtual visits and Socket.IO for live record updates.
+                </p>
+                <div class="tech-stack">
+                    <span>MVVM</span>
+                    <span>Socket.IO</span>
+                    <span>Twilio</span>
+                    <span>Koin</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Where I've Worked</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3 class="job-title">Senior Software Engineer</h3>
+                <span class="company">@ Crest Infosystems Pvt. Ltd.</span>
+                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">May 2023 – Present</p>
+                <ul class="job-desc">
+                    <li>Architected a white-label POS solution supporting Product Flavors to manage multiple client environments.</li>
+                    <li>Spearheaded migration of legacy modules to Multi-Module Architecture using MVVM & Clean Architecture.</li>
+                    <li>Led a team of Android developers, conducting code reviews and mentorship.</li>
+                    <li>Implemented complex hardware integrations with PAX and Verifone SDKs.</li>
+                </ul>
+            </div>
+            <div class="timeline-item">
+                <h3 class="job-title">Senior Software Engineer</h3>
+                <span class="company">@ Narola Infotech</span>
+                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">Jun 2021 – Apr 2023</p>
+                <ul class="job-desc">
+                    <li>Engineered "Miclab" karaoke app using C++ (NDK), Oboe, and FFmpeg.</li>
+                    <li>Optimized audio latency from 500ms to <100ms for real-time effects.</li>
+                    <li>Designed TikTok-style UI flows using custom RecyclerView optimizations.</li>
+                </ul>
+            </div>
+             <div class="timeline-item">
+                <h3 class="job-title">Android Application Developer</h3>
+                <span class="company">@ BeetonZ Infotech</span>
+                <p class="hero-label" style="font-size: 0.9rem; margin-bottom: 10px;">Jun 2019 – Apr 2021</p>
+                <ul class="job-desc">
+                    <li>Managed complete SDLC from requirement gathering to Play Store deployment.</li>
+                    <li>Integrated ARCore to build utility tools utilizing OpenGL for 3D rendering.</li>
+                </ul>
+            </div>
         </div>
     </section>
 
